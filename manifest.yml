@@ -1,6 +1,6 @@
 applications:
-- name: faa
+- name: slack-retrobot-aka-faa
   instances: 1
   memory: 128M
   routes:
-  - route: faa.cfapps.io
+  - route: faa.apps.lre.routing.lol
