@@ -38,11 +38,6 @@ func main() {
 		panic(errors.New("Must provide POSTFACTO_RETRO_ID"))
 	}
 
-	techRetroID, ok := os.LookupEnv("POSTFACTO_TECH_RETRO_ID")
-	if !ok {
-		panic(errors.New("Must provide POSTFACTO_TECH_RETRO_ID"))
-	}
-
 	retroPassword, ok := os.LookupEnv("POSTFACTO_RETRO_PASSWORD")
 	if !ok {
 		panic(errors.New("must provide POSTFACTO_RETRO_PASSWORD"))
@@ -52,11 +47,6 @@ func main() {
 		Host:     postfactoAPI,
 		ID:       retroID,
 		Password: retroPassword,
-	}
-
-	t := &postfacto.RetroClient{
-		Host: postfactoAPI,
-		ID:   techRetroID,
 	}
 
 	server := slackcommand.Server{
@@ -81,7 +71,6 @@ const (
 	CommandHappy Command = "happy"
 	CommandMeh   Command = "meh"
 	CommandSad   Command = "sad"
-	CommandTech  Command = "tech"
 )
 
 func (d *PostfactoSlackDelegate) Handle(r slackcommand.Command) (string, error) {
